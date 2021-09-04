@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711978457264",
+    "project_id": "ihavefood",
+    "storage_bucket": "ihavefood.appspot.com",
+    "firebase_url": "https://ihavefood-default-rtdb.firebaseio.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711978457264:android:36ae7da62af983ae03c375",
+        "android_client_info": {
+          "package_name": "com.ihavefood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711978457264-70pma2g2srnl2ag01hg152ve036e0khu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuqlitILVRiQTvqEuw4kpL59j9SsyL2Ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711978457264-70pma2g2srnl2ag01hg152ve036e0khu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
