@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text,View, StyleSheet, ScrollView} from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput} from 'react-native-paper';
 import database from '@react-native-firebase/database';
 
 export default SearchScreen = (props) => {

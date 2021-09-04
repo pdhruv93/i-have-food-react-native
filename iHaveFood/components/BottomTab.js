@@ -17,23 +17,13 @@ export default BottomTab = (props) => {
         >
 
             <Tab.Screen 
-                name="Home" 
-                component={HomeScreen} 
+                name="Home"
+                component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="home" color={color} size={28} />
                     ),
                 }}
-
-                listeners={({ navigation, route }) => ({
-                    tabPress: e => {
-                        /*When the Home is clicked, use it as a reset function. Here we are not using Tab "navigation". This is the App.js "navigation"
-                        We are forcing the whole bottom tab component to re-render. I know this is not the correct solution but somehow the navigation
-                        Tab Navigator component does not respond in the current version
-                        */
-                        props.navigation.replace("BottomTab");
-                    },
-                })}
             />
 
 
