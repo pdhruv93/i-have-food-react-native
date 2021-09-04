@@ -7,16 +7,16 @@ export default ListView = (props)=> {
     return(
         <View style={[style.parent]}>
             <View style={[style.left]}>
-                <Text style={[style.left_text]}>{props.entry.title.charAt(0)}</Text>
+                <Text style={[style.left_text]}>{props.entry.data.title.charAt(0)}</Text>
             </View>
 
             <View style={[style.middle]}>
-                <Text style={{color:'#262b2f', fontSize:20, fontWeight: 'bold'}}>{props.entry.title}</Text>
-                <Text style={{fontSize:15, fontWeight: '400'}}>{props.entry.body}</Text>
-                <Text style={{color: '#737f8b'}}>Invoice</Text>
+                <Text style={{color:'#262b2f', fontSize:20, fontWeight: 'bold'}}>{props.entry.data.title}</Text>
+                <Text style={{fontSize:15, fontWeight: '400'}}>{props.entry.data.fullName}</Text>
+                <Text style={{color: '#737f8b'}}>{props.entry.data.locality}</Text>
             </View>
 
-            <Text style={[style.right]}>{props.entry.id}</Text>
+            <Text style={[style.right]}>{props.entry.data.expiry}</Text>
         </View>
     )
 }
@@ -56,8 +56,8 @@ const style = StyleSheet.create({
     },
 
     right: {
-        flex: 0.5, 
-        color: '#78838f', 
+        flex: 1, 
+        color: '#c22146', 
         fontWeight: 'bold'
     }
 

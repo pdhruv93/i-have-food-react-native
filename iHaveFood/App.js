@@ -19,6 +19,10 @@ export default App = () => {
   }, [])
 
 
+  console.log("Registering User to recieve Firebase notifications...");
+  messaging().registerDeviceForRemoteMessages();
+
+  
   return (
     <NavigationContainer>
         <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{headerShown: false}}>

@@ -1,10 +1,9 @@
 import React from 'react';
 import {Text,View, StyleSheet, ScrollView} from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
+import database from '@react-native-firebase/database';
 
 export default SearchScreen = (props) => {
-
-
 
     return (
         <View style={{margin : 20}}>
@@ -14,11 +13,33 @@ export default SearchScreen = (props) => {
             <Text>{"\n"}</Text>
 
             <ScrollView>
-                <TextInput label="Pincode" placeholder="Searches exact pincode" style={style.TextInputStyleClass} placeholderTextColor="#3b4956"/>
-                <Text>{"\n"}</Text>
-                <Button mode="contained" style={style.ButtonStyleClass} onPress={() => console.log('Pressed')}>
-                    <Text style={{fontSize: 17}}>Search</Text>
-                </Button>
+                <TextInput label="Pincode" placeholder="Searches exact pincode" 
+                    style={style.TextInputStyleClass} placeholderTextColor="#3b4956"
+                    onChangeText={pincode =>{
+                        if(pincode.length > 4)
+                        {
+                            database().ref('/entries')
+                            .once('value')
+                            .then(snapshot => {
+                                let data = snapshot.val();
+                                console.log("Successfully Fetched entries filtered by pinCode");
+
+                                //Preproecessing the response to make it compatible with FlatList
+                                var entriesFilteredByPincode=[];
+                                Object.keys(data).map(key =>{
+                                    if(data[key].pincode === pincode)
+                                    {
+                                        var dummyJSONObject={};
+                                        dummyJSONObject['id'] = key;
+                                        dummyJSONObject['data'] = data[key];
+                                        entriesFilteredByPincode.push(dummyJSONObject);
+                                    }	
+                                })
+                                props.setEntriesFetchedFromDB(entriesFilteredByPincode);
+                            });
+                        } 
+                    }} 
+                />
             </ScrollView >
         </View>
         

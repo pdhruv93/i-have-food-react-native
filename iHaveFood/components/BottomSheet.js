@@ -19,7 +19,7 @@ export default HomeScreen = (props) => {
                 }
             }}
             >
-                <SearchScreen/>
+                <SearchScreen setEntriesFetchedFromDB={props.setEntriesFetchedFromDB}/>
             </RBSheet>
         </View>
     );   

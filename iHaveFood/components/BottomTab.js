@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const Tab = createMaterialBottomTabNavigator();
 
-export default BottomTab = () => {
+export default BottomTab = (props) => {
 
     console.log("BottomTab Component Loaded!!!");
 
@@ -24,6 +24,16 @@ export default BottomTab = () => {
                         <MaterialCommunityIcons name="home" color={color} size={28} />
                     ),
                 }}
+
+                listeners={({ navigation, route }) => ({
+                    tabPress: e => {
+                        /*When the Home is clicked, use it as a reset function. Here we are not using Tab "navigation". This is the App.js "navigation"
+                        We are forcing the whole bottom tab component to re-render. I know this is not the correct solution but somehow the navigation
+                        Tab Navigator component does not respond in the current version
+                        */
+                        props.navigation.replace("BottomTab");
+                    },
+                })}
             />
 
 

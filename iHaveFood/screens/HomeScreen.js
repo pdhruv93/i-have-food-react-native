@@ -1,27 +1,35 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {Text, View, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import { IconButton } from 'react-native-paper';
 import ListView from '../components/ListView';
-import RBSheet from "react-native-raw-bottom-sheet";
+import database from '@react-native-firebase/database';
 import BottomSheet from '../components/BottomSheet';
 
 export default HomeScreen = (props) => {
 
-    const bottomSheefRef=useRef();
+    console.log("HomeScreen Loaded!!!");
 
-    const entries = [
-        { id: 0, title: 'Balbasaur', body: 'JavaScript & JQuery: Web Development',},
-        { id: 1, title: 'Squirtle',  body: 'To Sleep in a Cloud of Stars' },
-        { id: 2, title: 'Pikachu',  body: 'Dance on the Moon' },
-        { id: 3, title: 'Ekans',  body: 'Best birthday party with enemies' },
-        { id: 4, title: 'Meow',  body: 'Second thought changed my life' },
-        { id: 5, title: 'Pidgeot',  body: 'Master data science with deep neural network' },
-        { id: 6, title: 'Psycho',  body: 'Rest Api with SpringBoot Data Rest Modified Title2' },
-        { id: 7, title: 'Togipi',  body: 'Rest Api with Django rest framework' },
-        { id: 8, title: 'Rock',  body: 'Change life with Yoga' },
-        { id: 9, title: 'Ash',  body: 'How the mind works' },
-        { id: 10, title: 'Charlizard',  body: 'How to analyze people' }
-    ];
+    const bottomSheefRef=useRef();
+    const [entriesFetchedFromDB, setEntriesFetchedFromDB] = useState([]);
+
+
+    useEffect(() => {
+        console.log("Getting entries list from Firebase!!");
+        database().ref('/entries')
+        .on('value', (snapshot) => {
+            let data = snapshot.val();
+            var processedResponse=[];
+            //Preproecessing the response to make it compatible with FlatList
+            Object.keys(data).map(key =>{
+                var dummyJSONObject={};
+                dummyJSONObject['id'] = key;
+                dummyJSONObject['data'] = data[key];
+                processedResponse.push(dummyJSONObject);
+            })
+            setEntriesFetchedFromDB(processedResponse);
+        })
+    }, []);
+
 
     return (
         <>
@@ -40,7 +48,7 @@ export default HomeScreen = (props) => {
 
             <SafeAreaView style={{display: 'flex', flexDirection: 'column', marginBottom: 80}}>
                 <FlatList
-                    data={entries}
+                    data={entriesFetchedFromDB}
                     keyExtractor={({ id }) => id.toString()}
                     renderItem={
                         ({ item }) => 
@@ -49,9 +57,10 @@ export default HomeScreen = (props) => {
                 />
             </SafeAreaView>
 
-            <BottomSheet bottomSheefRef={bottomSheefRef}/>
+            <BottomSheet setEntriesFetchedFromDB={setEntriesFetchedFromDB} bottomSheefRef={bottomSheefRef}/>
         </>
     );
+
 };
 
 
