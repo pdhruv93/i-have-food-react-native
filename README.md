@@ -1,17 +1,17 @@
 <h2>Splash Screen</h2>
-<img src="screenshots/splash.png" width="350">
+<img src="screenshots/splash.PNG" width="350">
 
 <h2>Home Screen: showing list of food entries</h2>
-<img src="screenshots/home_screen.png" width="350">
+<img src="screenshots/home_screen.PNG" width="350">
 
 <h2>Filtering by Pincode Option</h2>
-<img src="screenshots/filter.png" width="350">
+<img src="screenshots/filter.PNG" width="350">
 
 <h2>Forms and Validations using Formik: To add new food entry</h2>
-<img src="screenshots/new_entry.png" width="350">
+<img src="screenshots/new_entry.PNG" width="350">
 
 <h2>Details of an entry using Bottom Sheet Modal</h2>
-<img src="screenshots/detailed.png" width="350">
+<img src="screenshots/detailed.PNG" width="350">
 
 Custom Fonts Installation
 =================================
