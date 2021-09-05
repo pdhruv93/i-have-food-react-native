@@ -13,6 +13,9 @@
 <h2>Details of an entry using Bottom Sheet Modal</h2>
 <img src="screenshots/detailed.PNG" width="350">
 
+<h2>Google Firebase Push Notifications</h2>
+<img src="screenshots/notification.png" width="350">
+
 Custom Fonts Installation
 =================================
 https://www.youtube.com/watch?v=g64x5mJadbk
