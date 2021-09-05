@@ -1,11 +1,14 @@
-import React from 'react';
-import {View, Text,StyleSheet} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text,StyleSheet, Pressable} from 'react-native';
+import {SelectedEntryContext} from '../screens/HomeScreen';
 
 
 export default ListView = (props)=> {
 
+    const {selectedEntry, setSelectedEntry, bottomSheetRef}=useContext(SelectedEntryContext);
+
     return(
-        <View style={[style.parent]}>
+        <Pressable style={[style.parent]} onPress={() => {setSelectedEntry(props.entry); bottomSheetRef.current?.open()} }>
             <View style={[style.left]}>
                 <Text style={[style.left_text]}>{props.entry.data.title.charAt(0)}</Text>
             </View>
@@ -17,7 +20,7 @@ export default ListView = (props)=> {
             </View>
 
             <Text style={[style.right]}>{props.entry.data.expiry}</Text>
-        </View>
+        </Pressable>
     )
 }
 
