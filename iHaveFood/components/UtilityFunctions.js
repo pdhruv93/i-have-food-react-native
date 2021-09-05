@@ -43,6 +43,7 @@ export const handleNewEntry=async(entry)=>{
 				deviceIdsToSendNotifications.push(data[key].deviceId);
 		})
 
+
 		if(deviceIdsToSendNotifications.length>0)
 		{
 			console.log("Generating push notifications for other users who created entries in same Pincode");
@@ -61,7 +62,7 @@ export const handleNewEntry=async(entry)=>{
 				headers: 
 				{
 					'Content-Type': 'application/json',
-					'Authorization' : 'key=AAAA4bWJScI:APA91bEXP3eOGFuC8XHCTql__GJfxZbC-ashdUoMIrKlgg0ahu9jt-ILfkyLnjDioCBFwhe1jZQrneHj0rhSzdyW08ZAhcNokae2G5mEDh5bsCqm5TzfMTZik2w6cDYpHXzDLQmKO65g'
+					'Authorization' : 'key=AAAApcU5GLA:APA91bFjsexHLInms95JxN6_rX0Jzrqn5a3zmI-nJjOzUcZy4h_g7Rg_m3Gn4cpWcILjiATiwnk_EGCGOY9Y2OQLBIoQkSyDM-B33X1Pgsh8ryHBLNB6kDXegvRIvZuTm2gOMc2F-ZId'
 				}
 			})
 			.then(res => {
